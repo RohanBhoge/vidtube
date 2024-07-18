@@ -1,0 +1,48 @@
+.recommended {
+  flex-basis: 30%;
+}
+
+.side-video-list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.side-video-list img {
+  border-radius: 5px;
+  flex-basis: 49%;
+  width: 50%;
+}
+.vid-info {
+  flex-basis: 49%;
+}
+
+.vid-info h4 {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #000;
+}
+.vid-info p {
+  color: #989a9c;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.side-video-list:hover {
+  animation: Hover 0.4s forwards;
+}
+
+@keyframes Hover {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 900px) {
+  .recommended {
+    flex-basis: 100%;
+  }
+}

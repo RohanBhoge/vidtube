@@ -1,0 +1,107 @@
+.sidebar {
+  position: relative;
+  background: white;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  padding-left: 1%;
+  padding-top: 80px;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.sidebar .side-links {
+  height: 40px;
+  /* width: fit-content; */
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  flex-wrap: wrap;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.sidebar p{
+  padding-left: 10px;
+}
+
+.small-sidebar .side-links {
+  /* width: 70px; */
+  padding-left: 0%;
+  height: 65px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+.small-sidebar {
+  width: 7%;
+}
+.small-sidebar .subscribed-list {
+  display: none;
+}
+.shortcut-links img {
+  width: 20px;
+}
+.small-sidebar p {
+  padding-left: 0;
+  bottom: -12px;
+  font-size: 10px;
+}
+.small-sidebar img {
+  width: 28px;
+}
+.small-sidebar .shortcut-links {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+@keyframes Hover {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(2);
+  }
+}
+
+.sidebar hr {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  width: 85%;
+}
+.small-sidebar hr {
+  display: none;
+}
+.subscribed-list h3 {
+  font-size: 13px;
+  margin: 20px 0;
+  color: #5a5a5a;
+}
+.subscribed-list img {
+  width: 25px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.active {
+  animation: OnClickHover 0.7s 0.1s reverse;
+}
+
+@keyframes OnClickHover {
+  from{
+    background-color: none;
+  }
+  to{
+    background-color: gray;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+}
