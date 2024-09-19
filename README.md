@@ -50,8 +50,9 @@ The project is deployed and accessible at [https://rohanbhoge.github.io/youtube-
 
 ## Contact
 
-- **Your Name** - [bhogerohan60@example.com](mailto:bhogerohan60@example.com)
+- **Your Name** - [Rohan Bhoge](mailto:bhogerohan60@example.com)
 - **GitHub**: [https://github.com/RohanBhoge](https://github.com/RohanBhoge)
+- **Linkedin**:[https://www.linkedin.com/in/rohanbhoge](https://www.linkedin.com/in/rohanbhoge)
 
 ## Acknowledgments
 
