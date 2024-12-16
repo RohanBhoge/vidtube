@@ -1,4 +1,4 @@
-# YouTube Clone
+# VidTube 
 
 This project is a front-end implementation of a YouTube-like application. Built with React, CSS, and HTML, it aims to replicate core features of YouTube, including video playback and user interaction.
 
