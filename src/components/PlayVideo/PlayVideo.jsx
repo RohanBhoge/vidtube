@@ -9,7 +9,7 @@ import moment from "moment";
 import { useParams } from "react-router-dom";
 
 const PlayVideo = () => {
-  const {videoId}=useParams()
+  const { videoId } = useParams();
   const [apiData, setApiData] = useState(null);
   const [channelData, setChannelData] = useState(null);
   const [commentData, setCommentData] = useState([]);
@@ -80,7 +80,7 @@ const PlayVideo = () => {
       <hr />
       <div className="publisher">
         <img
-            src={channelData ? channelData.snippet.thumbnails.default.url : ""}
+          src={channelData ? channelData.snippet.thumbnails.default.url : ""}
           alt=""
         />
 
