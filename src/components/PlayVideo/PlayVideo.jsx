@@ -1,40 +1,44 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./PlayVideo.css";
 import like from "../../assets/like.png";
 import dislike from "../../assets/dislike.png";
 import share from "../../assets/share.png";
 import save from "../../assets/save.png";
-import { value_converter } from "../../Data";
+import { value_converter, API_KEY } from "../../Data";
 import moment from "moment";
-import { useParams } from "react-router-dom";
+import VideoContext from "../../context/video/VideoContext";
 
 const PlayVideo = () => {
-  const { videoId } = useParams();
+  const { videoId } = useContext(VideoContext);
   const [apiData, setApiData] = useState(null);
   const [channelData, setChannelData] = useState(null);
   const [commentData, setCommentData] = useState([]);
-  const ApiKey = import.meta.env.API_KEY;
 
   const fetchVideoData = async () => {
     // Fetching videos Data
-    const videoDetails_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${ApiKey}`;
+    const videoDetails_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`;
     await fetch(videoDetails_url)
       .then((res) => res.json())
-      .then((data) => setApiData(data.items[0]));
+      .then((data) => {
+        console.log(data);
+          setApiData(data.items[0]);
+      });
   };
+
   useEffect(() => {
     fetchVideoData();
   }, [videoId]);
+  console.log(apiData, videoId);
 
   const fetchOtherData = async () => {
-    // fetching ChannelDatac
-    const channelData_url = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${apiData.snippet.channelId}&key=${ApiKey}`;
+    // fetching ChannelData
+    const channelData_url = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${apiData.snippet.channelId}&key=${API_KEY}`;
     await fetch(channelData_url)
       .then((res) => res.json())
       .then((data) => setChannelData(data.items[0]));
 
-    // ferching comment data.
-    const comment_URL = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${videoId}&key=${ApiKey}`;
+    // fetching comment data.
+    const comment_URL = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${videoId}&key=${API_KEY}`;
     await fetch(comment_URL)
       .then((res) => res.json())
       .then((data) => setCommentData(data.items));
