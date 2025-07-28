@@ -3,10 +3,9 @@ import "./Recommended.css";
 import { Link } from "react-router-dom";
 import { API_KEY, value_converter } from "../../Data";
 const Recommended = ({ categoryId }) => {
-  console.log(categoryId);
   const [apiData, setApiData] = useState([]);
   const fetchData = async () => {
-    const relatedVideo_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=25&regionCode=US&videoCategoryId=${"0"}&key=${API_KEY}`;
+    const relatedVideo_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=25&regionCode=IN&videoCategoryId=${"0"}&key=${API_KEY}`;
     await fetch(relatedVideo_url)
       .then((res) => res.json())
       .then((data) => setApiData(data.items));
@@ -21,7 +20,7 @@ const Recommended = ({ categoryId }) => {
       {apiData.map((item, index) => {
         return (
           <Link
-            to={`/video/${item.snippet.categoryId}/${item.id}`}
+            to={`/video/${item.snippet.categoryID}/${item.id}`}
             key={index}
             className="side-video-list"
           >

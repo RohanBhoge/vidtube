@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import "./Feed.css";
 import VideoContext from "../../context/video/VideoContext.jsx";
-import { API_KEY, value_converter, searchVideos } from "../../Data.js";
+import { API_KEY } from "../../Data.js";
 import { Link } from "react-router-dom";
 import moment from "moment";
 

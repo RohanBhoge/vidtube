@@ -11,10 +11,12 @@ import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { searchVideos } from "../../Data";
 import VideoContext from "../../context/video/VideoContext";
+import AuthContext from "../../context/Auth/AuthContext";
 
 const Navbar = ({ setSidebar }) => {
   const navigate = useNavigate();
   const { setData } = useContext(VideoContext);
+  const { user } = useContext(AuthContext);
   const [animation, setAnimation] = useState(false);
   const [query, setQuery] = useState("");
 
@@ -69,6 +71,11 @@ const Navbar = ({ setSidebar }) => {
               e.preventDefault();
               onSearch(query);
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                onSearch(query);
+              }
+            }}
           />
           <img src={search_icon} alt="" onClick={() => onSearch(query)} />
         </div>
@@ -77,7 +84,10 @@ const Navbar = ({ setSidebar }) => {
         <img src={upload} alt="" />
         <img src={more_icon} alt="" />
         <img src={notification_icon} alt="" />
-        <img src={profile_icon} className="user-icon" alt="" />
+        <Link to="/auth" className="user-profile">
+          <img src={profile_icon} className="user-icon" alt="" />
+          <p>{user ? "Logged In" : "Guest"}</p>
+        </Link>
       </div>
     </nav>
   );
