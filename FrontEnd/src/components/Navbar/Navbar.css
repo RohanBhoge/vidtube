@@ -1,7 +1,14 @@
+/* Add this reusable utility class at the top */
+.flex-div {
+  display: flex;
+  align-items: center;
+}
+
 nav {
+  height: 35px;
   padding: 10px 2%;
   justify-content: space-between;
-  box-shadow: 0 0 10px rgb(0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background: #fff;
   position: sticky;
   top: 0;
@@ -9,19 +16,25 @@ nav {
 }
 
 .menu {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* No need for display/justify/align here if it's not a flex container itself */
   margin-right: 25px;
   padding: 8px;
   border-radius: 5px;
+  cursor: pointer;
 }
+
+/* This class provides the temporary click feedback */
+.active {
+  background-color: #f0f0f0; 
+}
+
 .nav-left .menu-icon {
   width: 22px;
 }
 
 .nav-left .logo {
   width: 130px;
+  margin-left: 15px; /* Added some space */
 }
 
 .nav-middle .search-box {
@@ -40,49 +53,35 @@ nav {
 
 .nav-middle .search-box img {
   width: 15px;
+  cursor: pointer;
 }
+
 .nav-right img {
   width: 25px;
   margin-right: 25px;
 }
+
 .nav-right .user-icon {
   width: 35px;
   border-radius: 50%;
+  margin-right: 0; /* No margin on the last item */
 }
+
+/* User profile text styling */
 .user-profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 35px;
   text-decoration: none;
-  color: black;
+  color: #333;
 
-  img{
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    margin-bottom: 5px;
-  }
-  p{
-    font-size: 12px;
-    margin-top: 5px;
-  }
-  &:hover {
-    color: #007bff;
-  }
 }
-.active {
-  animation: OnClickHover 0.7s 0.01s reverse;
+.user-profile img {
+  width: 10px;
+}
+.user-profile p {
+  margin: 0;
 }
 
-@keyframes OnClickHover {
-  from {
-    background-color: none;
-  }
-  to {
-    background-color: gray;
-  }
-}
+
 @media (max-width: 900px) {
   .menu-icon {
     display: none;
@@ -93,6 +92,9 @@ nav {
   .nav-right .user-icon {
     display: block;
     width: 30px;
+  }
+  .nav-right .user-profile p {
+    display: none; /* Hide text on small screens */
   }
   .logo {
     width: 90px;
